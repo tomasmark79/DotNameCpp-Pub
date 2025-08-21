@@ -19,10 +19,10 @@ A comprehensive, production-ready C++ development template designed for rapid pr
 - **Development Tools**: clang-tidy, clang-format, cmake-format automation
 - **VSCode Integration**: Extensive keyboard shortcuts and task automation
 - **Cross-Toolchain Management**: Seamless integration with popular C++ toolchains
+- **Container Support**: Docker integration planned but not yet implemented
 
 ### 🚧 Current Limitations
 - **Coverage Analysis**: Only available for native builds (`default` architecture)
-- **Container Support**: Docker integration planned but not yet implemented
 - **Help System**: SolutionController.py help documentation planned but not yet started
 
 ### 🎯 Upcoming Features (till 2026)
@@ -90,6 +90,7 @@ This template has been crafted to eliminate the initial setup overhead that typi
 - **Documentation**: Doxygen with automated generation
 - **Testing**: Google Test framework integration
 - **Debugging**: GDB/LLDB support with VSCode integration
+- **Debugging**: CMake files support with VSCode integration
 
 ### 📦 **Project Flexibility**
 - **Dual Structure**: Library and standalone application support
@@ -983,8 +984,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-20 11:50:29 UTC
-- **Source commit:** `7f635bb`
+- **Last synchronization:** 2025-08-21 06:01:17 UTC
+- **Source commit:** `9d0e2c4`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
