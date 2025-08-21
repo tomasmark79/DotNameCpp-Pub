@@ -4,7 +4,7 @@
 
 A comprehensive, production-ready C++ development template designed for rapid project initialization with modern tooling, cross-platform support, and automated workflows. This template provides everything needed to start developing native and cross-platform C++ applications efficiently and cleanly.
 
-<span id="linux-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/linux.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/linux.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('linux-badge').remove()" style="border:0;"></a></span> <span id="macos-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/macos.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/macos.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('macos-badge').remove()" style="border:0;"></a></span> <span id="windows-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/windows.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/windows.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('windows-badge').remove()" style="border:0;"></a></span>
+<span id="linux-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/linux.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/linux.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('linux-badge').remove()" style="border:0;"></a></span> <span id="macos-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/macos.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/macos.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('macos-badge').remove()" style="border:0;"></a></span> <span id="windows-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/windows.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/windows.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('windows-badge').remove()" style="border:0;"></a></span> <span id="docker-badge"><a href="https://github.com/tomasmark79/DotNameCpp/actions/workflows/docker.yml"><img src="https://github.com/tomasmark79/DotNameCpp/actions/workflows/docker.yml/badge.svg?branch=main" alt="" onerror="document.getElementById('docker-badge').remove()" style="border:0;"></a></span>
 
 ---
 
@@ -1029,8 +1029,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-21 20:43:43 UTC
-- **Source commit:** `a23f874`
+- **Last synchronization:** 2025-08-21 21:13:32 UTC
+- **Source commit:** `c178a16`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
