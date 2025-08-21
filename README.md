@@ -462,13 +462,13 @@ This template provides deep VSCode integration with optimized settings and tasks
 - **🧹 Clean Build**: Remove build artifacts and rebuild
 - **🗡️ Conan Install**: Install and update dependencies
 - **🔧 CMake Configure**: Configure build system
-- **🔧 CMake Configure with Coverage**: Configure build with code coverage enabled
-- **🪲 CMake Debug**: Configure with CMake debugger
+- **📊 CMake configure with Coverage**: Configure build with code coverage enabled
+- **🪲 CMake Configure with CMake-debugger**: Configure with CMake debugger
 - **🔨 Build**: Compile the project
 - **🧪 Run Tests**: Execute test suite
-- **📜 Collect Licenses**: Gather dependency licenses
-- **📌 Install Artifacts**: Install built components
-- **🗜️ Create Tarballs**: Package for distribution
+- **📜 Gather dependency licenses**: Gather dependency licenses
+- **📌 Install built components**: Install built components
+- **🗜️ Create Tarballs for distribution**: Package for distribution
 - **🛸 Run CPack**: Create installation packages
 
 **🛠️ Other Tasks (Ctrl+F7)**:
@@ -1026,8 +1026,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-21 06:55:49 UTC
-- **Source commit:** `93f275b`
+- **Last synchronization:** 2025-08-21 09:06:34 UTC
+- **Source commit:** `5d17f03`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
