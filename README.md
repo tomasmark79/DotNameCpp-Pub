@@ -19,7 +19,7 @@ A comprehensive, production-ready C++ development template designed for rapid pr
 - **Development Tools**: clang-tidy, clang-format, cmake-format automation
 - **VSCode Integration**: Extensive keyboard shortcuts and task automation
 - **Cross-Toolchain Management**: Seamless integration with popular C++ toolchains
-- **Container Support**: Docker integration planned but not yet implemented
+- **Container Support**: Complete Docker environment with multi-stage builds
 
 ### 🚧 Current Limitations
 - **Coverage Analysis**: Only available for native builds (`default` architecture)
@@ -550,29 +550,32 @@ cmake --preset cross-arm64-release
 
 ### 🐳 Container Development
 
-**Status**: 🚧 **Planned for implementation**
+**Status**: ✅ **Implemented**
 
-```dockerfile
-# Dockerfile.dev (planned)
-FROM ubuntu:24.04
+Complete Docker environment with multi-stage builds:
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    cmake \
-    ninja-build \
-    python3-pip \
-    git \
-    ccache \
-    clang-tidy \
-    clang-format
+```bash
+# Quick start from project root
+./docker.sh dev     # Start development environment
+./docker.sh test    # Run zero-to-hero build test
+./docker.sh prod    # Start production web server
 
-RUN pip3 install conan cmake-format gcovr
-RUN conan profile detect
-
-WORKDIR /workspace
-COPY . .
-RUN conan install . --build=missing
+# Or navigate to docker directory for full control
+cd docker/
+make help           # Show all available commands
+make dev && make shell
 ```
+
+**Key Features**:
+- **Organized structure**: All Docker files in `/docker` directory
+- **Multi-stage builds**: Development, production, and clean environments
+- **Easy access**: Quick commands via `./docker.sh` or `cd docker && make`
+- **Persistent volumes**: Conan cache and ccache for faster rebuilds
+- **Pre-configured aliases**: `build-debug`, `test-run`, `zero-to-hero`
+- **Web hosting**: Nginx server for documentation and demos
+- **Live development**: Source code mounted for real-time changes
+
+See [`docker/README.md`](docker/README.md) for complete usage guide.
 
 ---
 
@@ -1026,8 +1029,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-21 16:13:20 UTC
-- **Source commit:** `d8cb06a`
+- **Last synchronization:** 2025-08-21 20:43:43 UTC
+- **Source commit:** `a23f874`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
