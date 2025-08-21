@@ -1014,30 +1014,3 @@ For support, questions, or suggestions, please [open an issue](https://github.co
 
 [🔝 Back to top](#dotnamecpp---advanced-c-development-template)
 
----
-
-## 📢 Public Repository Information
-
-This is a **public version** of the **DotNameCpp** project.
-
-This repository contains carefully selected files from the main project that are suitable for public sharing and collaboration.
-
-### 🔄 Automatic Synchronization
-
-The content of this repository is automatically synchronized using GitHub Actions.
-
-- **Last synchronization:** 2025-08-21 14:10:30 UTC
-- **Source commit:** `5465e5a`
-- **Synchronization rules:** Controlled by automated configuration
-
-### 🤝 Contributing
-
-If you find this project useful or have suggestions for improvement, feel free to:
-- ⭐ Star this repository
-- 🐛 Report issues or bugs
-- 💡 Suggest new features
-- 🔄 Submit pull requests
-
-### 📞 Contact
-
-For questions about this project or collaboration opportunities, please create an issue in this repository.
