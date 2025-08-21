@@ -776,6 +776,24 @@ uniqueWheelsLib = std::make_unique<dotname::WheelsLib> (AppContext::assetsPath);
 LOG_I_STREAM << "Wheels count: " << uniqueWheelsLib->getWheelsCount() << std::endl;
 ```
 
+```bash
+$ ./CarStandalone
+
+# output
+Starting CarStandalone ...
+WheelsLib v.0.0.1 constructed ...
+Assets: "tmp/Car/build/standalone/default/share/CarStandalone/assets"
+path: "tmp/Car/build/standalone/default/share/CarStandalone/assets/DotNameLogoV2.svg"
+CarLib v.0.0.1 constructed ...
+Assets: "tmp/Car/build/standalone/default/share/CarStandalone/assets"
+path: "tmp/Car/build/standalone/default/share/CarStandalone/assets/DotNameLogoV2.svg"
+Wheels count: 4
+CarLib v.0.0.1 ... destructed
+This is a demo error message
+Sucessfully exited CarStandalone
+WheelsLib v.0.0.1 ... destructed
+```
+
 #### Method 2: FetchContent similar to CPM.cmake
 
 ```cmake
@@ -1008,8 +1026,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-21 06:49:15 UTC
-- **Source commit:** `6f724d0`
+- **Last synchronization:** 2025-08-21 06:55:49 UTC
+- **Source commit:** `93f275b`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
