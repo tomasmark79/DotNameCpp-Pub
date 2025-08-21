@@ -25,9 +25,10 @@ A comprehensive, production-ready C++ development template designed for rapid pr
 - **Coverage Analysis**: Only available for native builds (`default` architecture)
 - **Help System**: SolutionController.py help documentation planned but not yet started
 
-### 🎯 Upcoming Features (till 2026)
+### 🎯 Upcoming Features (2025+)
 - Enhanced container development workflows
 - Performance profiling integration
+- Creation of Conan Package from the project
 
 ---
 
@@ -754,21 +755,42 @@ namespace DotNameLib {
 
 ### 🔗 Integration Methods
 
-#### Method 1: FetchContent (Recommended)
+1. You create your own project called **Wheels** *using DotNameCpp* and push it to GitHub.
+2. Then, in your next project named **Car**, you use the **Wheels** library as follows:
+
+#### Method 1: CPM.cmake (Recommended)
+
+```cmake
+# in project Car in file project-standalone.cmake
+CPMAddPackage("gh:tomasmark79/Wheels#main")
+target_link_libraries(${STANDALONE_NAME} PRIVATE WheelsLib CarLib cxxopts::cxxopts)
+
+# in project Car in file project-tests.cmake
+target_link_libraries(${TEST_NAME} PRIVATE GTest::gtest GTest::gtest_main WheelsLib dotname::${TEST_NAME_LOWER}_standalone_common)
+```
+```cpp
+// in project Car in file AppCore.hpp
+#include <WheelsLib/WheelsLib.hpp>
+std::unique_ptr<dotname::WheelsLib> uniqueWheelsLib;
+uniqueWheelsLib = std::make_unique<dotname::WheelsLib> (AppContext::assetsPath);
+LOG_I_STREAM << "Wheels count: " << uniqueWheelsLib->getWheelsCount() << std::endl;
+```
+
+#### Method 2: FetchContent similar to CPM.cmake
 
 ```cmake
 include(FetchContent)
 FetchContent_Declare(
-    DotNameLib
-    GIT_REPOSITORY https://github.com/tomasmark79/DotNameLib.git
+    Wheels
+    GIT_REPOSITORY https://github.com/tomasmark79/Wheels.git
     GIT_TAG v1.0.0
 )
-FetchContent_MakeAvailable(DotNameLib)
+FetchContent_MakeAvailable(Wheels)
 
-target_link_libraries(your_target DotNameLib::DotNameLib)
+target_link_libraries(your_target Wheels::Wheels)
 ```
 
-#### Method 2: Conan Package
+#### Method 3: Conan Package - TODO
 
 ```python
 # Create Conan package
@@ -779,18 +801,18 @@ def requirements(self):
     self.requires("dotnamelib/1.0.0")
 ```
 
-#### Method 3: Subdirectory
+#### Method 4: Subdirectory
 
 ```cmake
-add_subdirectory(path/to/DotNameLib)
-target_link_libraries(your_target DotNameLib::DotNameLib)
+add_subdirectory(path/to/Wheels)
+target_link_libraries(your_target Wheels::Wheels)
 ```
 
-#### Method 4: find_package
+#### Method 5: find_package
 
 ```cmake
-find_package(DotNameLib REQUIRED)
-target_link_libraries(your_target DotNameLib::DotNameLib)
+find_package(Wheels REQUIRED)
+target_link_libraries(your_target Wheels::Wheels)
 ```
 
 ### 📋 API Design Guidelines
@@ -802,6 +824,8 @@ target_link_libraries(your_target DotNameLib::DotNameLib)
 - **Documentation**: Comprehensive Doxygen documentation
 
 ### 🔄 Versioning Strategy
+
+The main versioning for libraries is maintained in the project definition file at `cmake/project-library.cmake`.
 
 ```cmake
 # Semantic versioning
@@ -984,8 +1008,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-21 06:01:17 UTC
-- **Source commit:** `9d0e2c4`
+- **Last synchronization:** 2025-08-21 06:49:15 UTC
+- **Source commit:** `6f724d0`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
