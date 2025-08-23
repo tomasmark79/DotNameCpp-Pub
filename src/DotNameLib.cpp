@@ -14,7 +14,6 @@ namespace dotname {
 
   DotNameLib::DotNameLib () {
     LOG_D_STREAM << libName_ << " constructed ..." << std::endl;
-    AssetContext::clearAssetsPath ();
   }
 
   DotNameLib::DotNameLib (const std::filesystem::path& assetsPath) : DotNameLib () {
