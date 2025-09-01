@@ -334,7 +334,7 @@ conan install . --output-folder="build/" --build=missing --deployer=full_deploy 
 cmake --preset generic-linux-x86_64-gcc-15-debug -DBUILD_LIBRARY=ON -DBUILD_STANDALONE=ON
 
 # Build the project
-cmake --build build/ -j 16
+cmake --build build/ -j $(nproc)
 ```
 
 **Important:** Always specify the build type (`-s build_type=Debug` or `-s build_type=Release`) with Conan install, and use the generated CMake preset instead of manual configuration. This ensures proper dependency resolution and linking.
@@ -1060,8 +1060,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-09-01 07:37:09 UTC
-- **Source commit:** `1432c05`
+- **Last synchronization:** 2025-09-01 10:37:59 UTC
+- **Source commit:** `829dea8`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
