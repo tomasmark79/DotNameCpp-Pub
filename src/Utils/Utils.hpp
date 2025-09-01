@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 #include <optional>
+#include <execution>
+#include <chrono>
 
 // fullfilled from ../cmake/tmplt-assets.cmake)
 #ifndef UTILS_ASSET_PATH
@@ -406,6 +408,36 @@ namespace DotNameUtils {
   } // namespace JsonUtils
 
   namespace Performance {
+
+    inline double heavy_calculation (double x) {
+      double result = x;
+      for (int i = 0; i < 1000; i++) {
+        result = sin (result) + cos (result);
+      }
+      return result;
+    }
+
+    inline void parUnseqHeavyCalculation (double initialValue) {
+      LOG_I_STREAM << "Parallel unsequenced heavy calculation" << std::endl;
+      const size_t N
+          = 500'000; std::vector<double> data (N); iota (data.begin (), data.end (), initialValue);
+
+      auto runTest = [&] (auto policy, const std::string& name) {
+        iota (data.begin (), data.end (), initialValue);
+        auto start = std::chrono::high_resolution_clock::now ();
+        for_each (policy, data.begin (), data.end (),
+                  [] (double& x) { x = heavy_calculation (x); });
+        auto end = std::chrono::high_resolution_clock::now ();
+        LOG_I_STREAM << name << ": "
+                     << std::chrono::duration_cast<std::chrono::milliseconds> (end - start).count ()
+                     << " ms\n";
+      };
+
+      runTest (std::execution::seq, "Sequential");
+      runTest (std::execution::par, "Parallel");
+      runTest (std::execution::par_unseq, "Parallel+Vectorization");
+    }
+
     inline void simpleCpuBenchmark (std::chrono::microseconds duration
                                     = std::chrono::microseconds (1000000)) {
       LOG_I_STREAM << "Simple CPU benchmark" << std::endl;

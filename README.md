@@ -520,6 +520,16 @@ Optimized C++ IntelliSense settings in `.vscode/c_cpp_properties.json`:
 }
 ```
 
+#### ⚙️ Useful Editor Settings
+
+To disable middle mouse button paste in VSCode (useful when accidentally triggering paste), add this setting to your VSCode configuration:
+
+```json
+{
+    "editor.selectionClipboard": false
+}
+```
+
 ---
 
 ## 🌍 Cross-Platform Development
@@ -1029,8 +1039,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-08-23 10:15:18 UTC
-- **Source commit:** `5f83eff`
+- **Last synchronization:** 2025-09-01 06:05:47 UTC
+- **Source commit:** `7b76cba`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing

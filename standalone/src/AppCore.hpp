@@ -42,6 +42,9 @@ int handlesArguments (int argc, const char* argv[]) {
                              cxxopts::value<bool> ()->default_value ("false"));
     options->add_options () ("2,log2file", "Log to file",
                              cxxopts::value<bool> ()->default_value ("false"));
+    options->add_options () ("3,cpubench", "Run single&multi core cpubench",
+                             cxxopts::value<bool> ()->default_value ("false"));
+
     const auto result = options->parse (argc, argv);
 
     if (result.count ("help")) {
@@ -59,6 +62,10 @@ int handlesArguments (int argc, const char* argv[]) {
       uniqueLib = std::make_unique<dotname::DotNameLib> (AppContext::assetsPath);
     } else {
       LOG_D_STREAM << "Loading library omitted [-1]" << std::endl;
+    }
+
+    if (result["cpubench"].as<bool> ()) {
+      Performance::parUnseqHeavyCalculation (3.14159); // require -ltbb
     }
 
     if (!result.unmatched ().empty ()) {
@@ -111,8 +118,6 @@ int runApp (int argc, const char* argv[]) {
   if (handlesArguments (argc, argv) != 0) {
     return 1;
   }
-
-  //Performance::simpleCpuBenchmark (); // default is off
 
   // I know it is smartpointer, but ... why not
   uniqueLib = nullptr;
