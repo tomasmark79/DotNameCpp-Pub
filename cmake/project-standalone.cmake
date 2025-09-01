@@ -50,7 +50,15 @@ target_sources(${STANDALONE_NAME} PRIVATE ${sources})
 apply_common_target_settings(${STANDALONE_NAME})
 
 # Link with library
-target_link_libraries(${STANDALONE_NAME} PRIVATE DotNameLib cxxopts::cxxopts tbb)
+target_link_libraries(${STANDALONE_NAME} PRIVATE DotNameLib cxxopts::cxxopts)
+
+# Link TBB only on Linux where it's properly supported
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(${STANDALONE_NAME} PRIVATE tbb)
+    message(STATUS "TBB enabled for Linux build")
+else()
+    message(STATUS "TBB disabled for ${CMAKE_SYSTEM_NAME} - using fallback implementation")
+endif()
 
 # ==============================================================================
 # Asset processing and Emscripten configuration
@@ -69,7 +77,13 @@ if(ENABLE_GTESTS)
     include(CTest) # Enable testing at the root level
     add_library(${TEST_NAME_LOWER}_standalone_common INTERFACE)
     target_link_libraries(${TEST_NAME_LOWER}_standalone_common INTERFACE ${LIBRARY_NAME}
-                                                                         cxxopts::cxxopts tbb)
+                                                                         cxxopts::cxxopts)
+    
+    # Link TBB only on Linux for tests
+    if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        target_link_libraries(${TEST_NAME_LOWER}_standalone_common INTERFACE tbb)
+    endif()
+    
     add_library(dotname::${TEST_NAME_LOWER}_standalone_common ALIAS
                 ${TEST_NAME_LOWER}_standalone_common)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/standalone/tests tests)

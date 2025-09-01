@@ -65,7 +65,7 @@ int handlesArguments (int argc, const char* argv[]) {
     }
 
     if (result["cpubench"].as<bool> ()) {
-      Performance::parUnseqHeavyCalculation (3.14159); // require -ltbb
+      Performance::parUnseqHeavyCalculation (3.14159); // uses parallel execution on Linux (-ltbb), fallback on other platforms
     }
 
     if (!result.unmatched ().empty ()) {
