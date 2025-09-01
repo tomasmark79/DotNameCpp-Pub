@@ -322,6 +322,25 @@ python SolutionController.py standalone "📊 Coverage HTML Report" default Debu
 python SolutionController.py standalone "🔨 Build" x86_64_linux-clang20 Release 
 ```
 
+### ⚡ Quick Build without SolutionController
+
+For lightweight public repository versions or when using the template without the SolutionController, you can build the project using these simple commands:
+
+```bash
+# Install dependencies with Debug build type
+conan install . --output-folder="build/" --build=missing --deployer=full_deploy -s build_type=Debug
+
+# Configure build using Conan-generated preset
+cmake --preset generic-linux-x86_64-gcc-15-debug -DBUILD_LIBRARY=ON -DBUILD_STANDALONE=ON
+
+# Build the project
+cmake --build build/ -j 16
+```
+
+**Important:** Always specify the build type (`-s build_type=Debug` or `-s build_type=Release`) with Conan install, and use the generated CMake preset instead of manual configuration. This ensures proper dependency resolution and linking.
+
+This approach provides a direct CMake workflow without the additional automation layer, making it suitable for simpler use cases or when integrating with existing build systems.
+
 ---
 
 ## 📦 Package Management
@@ -1041,8 +1060,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-09-01 06:41:25 UTC
-- **Source commit:** `9b4f918`
+- **Last synchronization:** 2025-09-01 07:37:09 UTC
+- **Source commit:** `1432c05`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
