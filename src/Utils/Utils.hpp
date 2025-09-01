@@ -20,6 +20,9 @@
 #include <optional>
 #include <execution>
 #include <chrono>
+#include <algorithm>
+#include <numeric>
+#include <cmath>
 
 // fullfilled from ../cmake/tmplt-assets.cmake)
 #ifndef UTILS_ASSET_PATH
@@ -419,23 +422,43 @@ namespace DotNameUtils {
 
     inline void parUnseqHeavyCalculation (double initialValue) {
       LOG_I_STREAM << "Parallel unsequenced heavy calculation" << std::endl;
-      const size_t N
-          = 500'000; std::vector<double> data (N); iota (data.begin (), data.end (), initialValue);
+      const size_t N = 500'000; std::vector<double> data (N); iota (data.begin (), data.end (), initialValue);
 
-      auto runTest = [&] (auto policy, const std::string& name) {
-        iota (data.begin (), data.end (), initialValue);
-        auto start = std::chrono::high_resolution_clock::now ();
-        for_each (policy, data.begin (), data.end (),
-                  [] (double& x) { x = heavy_calculation (x); });
-        auto end = std::chrono::high_resolution_clock::now ();
-        LOG_I_STREAM << name << ": "
-                     << std::chrono::duration_cast<std::chrono::milliseconds> (end - start).count ()
-                     << " ms\n";
-      };
+#if defined(__cpp_lib_execution) && __cpp_lib_execution >= 201603L && !defined(__APPLE__)
+          auto runTest
+          = [&] (auto policy, const std::string& name) {
+              iota (data.begin (), data.end (), initialValue);
+              auto start = std::chrono::high_resolution_clock::now ();
+              for_each (policy, data.begin (), data.end (),
+                        [] (double& x) { x = heavy_calculation (x); });
+              auto end = std::chrono::high_resolution_clock::now ();
+              LOG_I_STREAM
+                  << name << ": "
+                  << std::chrono::duration_cast<std::chrono::milliseconds> (end - start).count ()
+                  << " ms\n";
+            };
 
       runTest (std::execution::seq, "Sequential");
       runTest (std::execution::par, "Parallel");
       runTest (std::execution::par_unseq, "Parallel+Vectorization");
+#else
+          // Fallback for platforms without execution policy support (like macOS)
+          auto runTest
+          = [&] (const std::string& name) {
+              iota (data.begin (), data.end (), initialValue);
+              auto start = std::chrono::high_resolution_clock::now ();
+              for_each (data.begin (), data.end (), [] (double& x) { x = heavy_calculation (x); });
+              auto end = std::chrono::high_resolution_clock::now ();
+              LOG_I_STREAM
+                  << name << ": "
+                  << std::chrono::duration_cast<std::chrono::milliseconds> (end - start).count ()
+                  << " ms\n";
+            };
+
+      runTest ("Sequential (execution policies not supported)");
+      LOG_I_STREAM << "Note: Parallel execution policies not available on this platform"
+                   << std::endl;
+#endif
     }
 
     inline void simpleCpuBenchmark (std::chrono::microseconds duration
