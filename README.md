@@ -92,7 +92,7 @@ This template has been crafted to eliminate the initial setup overhead that typi
 - **Testing**: Google Test framework integration
 - **Debugging**: GDB/LLDB support with VSCode integration
 - **Debugging**: CMake files support with VSCode integration
-- **Parallel Computing**: TBB (Threading Building Blocks) for Linux builds with execution policy support
+- **Parallel Computing**: TBB (Threading Building Blocks) for Linux builds with execution policy support (requires `libtbb-dev` package)
 
 ### 📦 **Project Flexibility**
 - **Dual Structure**: Library and standalone application support
@@ -186,6 +186,7 @@ python SolutionController.py both "🦸 Zero to Hero" default Debug
 | **cmake-format** | CMake formatting | `pip install cmake-format` |
 | **Doxygen** | Documentation | [Download](https://www.doxygen.nl/download.html) |
 | **gcovr** | Code coverage | `pip install gcovr` |
+| **TBB** | Parallel computing (Linux) | `sudo dnf install tbb-devel` (Fedora), `sudo apt install libtbb-dev` (Ubuntu) |
 
 ### 💻 Supported Compilers
 
@@ -564,6 +565,8 @@ To disable middle mouse button paste in VSCode (useful when accidentally trigger
 | **IDE Integration** | ✅ | ✅ | ✅ | ✅ |
 | **CI/CD** | ✅ | ✅ | ✅ | ✅ |
 | **Container Support** | ✅ | ✅ | ✅ | ✅ |
+
+> **📝 Linux Note**: For full parallel computing support, install TBB development package: `sudo apt install libtbb-dev` (Ubuntu/Debian) or `sudo dnf install tbb-devel` (Fedora/RHEL)
 
 ### 🔧 Cross-Compilation Setup
 
@@ -1059,8 +1062,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-09-02 08:33:09 UTC
-- **Source commit:** `507ce57`
+- **Last synchronization:** 2025-09-02 12:04:32 UTC
+- **Source commit:** `b0b954d`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
