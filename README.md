@@ -84,7 +84,6 @@ This template has been crafted to eliminate the initial setup overhead that typi
 - **WebAssembly**: Emscripten integration for web deployment
 - **Cross-Compilation**: ARM, x86, x64 architectures
 - **Container Support**: Docker and GitHub Codespaces ready
-- **Platform-Optimized Features**: TBB parallel execution policies (Linux), fallback implementations (other platforms)
 
 ### 🧰 **Development Tools Integration**
 - **Static Analysis**: clang-tidy with comprehensive rule sets
@@ -1060,8 +1059,8 @@ This repository contains carefully selected files from the main project that are
 
 The content of this repository is automatically synchronized using GitHub Actions.
 
-- **Last synchronization:** 2025-09-01 17:58:10 UTC
-- **Source commit:** `b609aa9`
+- **Last synchronization:** 2025-09-02 08:33:09 UTC
+- **Source commit:** `507ce57`
 - **Synchronization rules:** Controlled by automated configuration
 
 ### 🤝 Contributing
